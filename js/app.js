@@ -1,6 +1,39 @@
-/* setup your angular app here */
+var produceApp = angular.module('ProduceApp', []);
 
-// debug stuff to show the app is loading and fruit / veggies are available
-console.log('App Started');
-console.log('Fruit count', fruits.length);
-console.log('Veggie count', vegetables.length);
+produceApp.run(function(){
+  console.log("init")
+})
+
+produceApp.controller('ProduceCtrl', ['$scope', function($scope) {
+
+  $scope.moveLeft = function(index) {
+    $scope.fruityList.push($scope.produceList[index]);
+    $scope.produceList.splice(index, 1);
+  }
+
+  $scope.moveRight = function(index) {
+    $scope.veggyList.push($scope.produceList[index]);
+    $scope.produceList.splice(index, 1);
+  }
+
+  $scope.produceList = [
+  'Potato',
+  'Cherry',
+  'Spinach',
+  'tomato',
+  'bok choi',
+  'banana',
+  'carrot',
+  'corn',
+  'green pepper',
+  'honey dew melon',
+  'blueberry',
+  'onion',
+  'cucumber',
+  'banana'
+];
+
+$scope.veggyList = [];
+$scope.fruityList = [];
+
+}]);
